@@ -1,0 +1,153 @@
+############################################################
+### GLOBAL IGNORES (applies to all projects)
+############################################################
+
+# Ignore all hidden folders (except those explicitly allowed)
+.*
+!.gitignore
+
+# Temporary / transient files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.log
+
+
+############################################################
+### .NET / DOTNET CORE
+############################################################
+
+# Build output
+bin/
+obj/
+
+# Node modules sometimes included in ASP.NET Core projects
+node_modules/
+wwwroot/node_modules/
+
+
+############################################################
+### VISUAL STUDIO CODE
+############################################################
+
+# VS Code settings (allow specific workspace configs)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local VS Code history
+.history/
+.history
+.ionide/
+
+# Built VS Code extensions
+*.vsix
+
+
+############################################################
+### PYTHON (Projects & Virtual Environments)
+############################################################
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+pythonenv/
+.conda/
+
+# Packaging / distribution
+build/
+dist/
+downloads/
+eggs/
+*.egg-info/
+*.egg
+wheels/
+pip-wheel-metadata/
+
+# PyInstaller
+*.spec
+*.manifest
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing / coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.coverage
+.coverage.*
+
+# Type checking
+.mypy_cache/
+.pytype/
+.pyre/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Documentation (Sphinx)
+docs/_build/
+
+# Python project tools
+.ropeproject/
+.spyproject/
+
+
+############################################################
+### JUPYTER NOTEBOOK
+############################################################
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Jupyter temporary files
+*.nbconvert.ipynb
+*.nbconvert/
+*.jupyter_cache/
+
+# Local Jupyter kernels
+.local/share/jupyter/kernels/
+
+
+############################################################
+### FRONTEND / NODEJS (generic)
+############################################################
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+dist/
+build/
+
+
+############################################################
+### OS & EDITOR SPECIFIC
+############################################################
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Linux
+*~
