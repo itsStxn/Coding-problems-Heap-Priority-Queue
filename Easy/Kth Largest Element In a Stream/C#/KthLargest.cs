@@ -10,28 +10,29 @@ public class KthLargest {
 		K = k;
 		Scores = [];
 		foreach (int n in nums) Add(n);
-		Console.WriteLine(string.Join(", ", Scores));
 	}
 
 	public int Add(int val) {
 		Scores.Add(val);
 		HeapifyUp();
 
-		int n = Scores.Count;
-		if (n > K) {
-			(Scores[0], Scores[^1]) = (Scores[^1], Scores[0]);
-			Scores.RemoveAt(n - 1);
-			HeapifyDown();
-		}
+		if (Scores.Count > K)
+			Dequeue();
 
-		return default;
+		return Scores[0];
+	}
+
+	private void Dequeue() {
+		(Scores[0], Scores[^1]) = (Scores[^1], Scores[0]);
+		Scores.RemoveAt(Scores.Count - 1);
+		HeapifyDown();
 	}
 
 	private void HeapifyUp() {
 		int curr = Scores.Count - 1;
 		int parent = (curr - 1) / 2;
 
-		while (parent >= 0 && Scores[curr] > Scores[parent]) {
+		while (curr > 0 && Scores[curr] < Scores[parent]) {
 			(Scores[curr], Scores[parent]) = (Scores[parent], Scores[curr]);
 			curr = parent;
 			parent = (curr - 1) / 2;
@@ -47,9 +48,9 @@ public class KthLargest {
 
 		int promoted = left;
 		if (right < n)
-			promoted = Scores[left] > Scores[right] ? left : right;
+			promoted = Scores[left] < Scores[right] ? left : right;
 		
-		if (Scores[curr] < Scores[promoted]) {
+		if (Scores[promoted] < Scores[curr]) {
 			(Scores[curr], Scores[promoted]) = (Scores[promoted], Scores[curr]);
 			HeapifyDown(promoted);
 		}
