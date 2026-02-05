@@ -1,4 +1,3 @@
-
 # Heap / Priority Queue
 
 ## Difficulties
@@ -47,3 +46,15 @@
 - Helps avoid **O(n log n) full sort**
 - Final answer depends on **heap top**
 - Space complexity tied to **heap size**
+
+## Tips
+### Binary Heap
+- Tree where the **parent's value >= children's value**
+- Represented as a list of **most-left** elements -> **there is no right without the left**
+- Parent = **(i - 1) / 2**, left child = **(2 * i) + 1**, right child = **(2 * i) + 2**
+- In a heap list, the leafs correspond to **all the values after the middle index**, so **leafs' indeces > (list.Count / 2) - 1**
+- Building a heap takes O(n) time: 
+  - Iterate backwards from the **last non-leaf index** and call **HeapifyDown on each index**
+  - Going backwards because calling HeapifyDown on the parents **work only if the children are already heaps**
+  - A heap **guarantees** that at the top there are either **max or min values**, hence HeapifyDown from children to parent is very efficient
+ 
