@@ -49,6 +49,7 @@
 
 ## Tips
 - A heap **guarantees** that at the top there are either **max or min values**
+- If a heap needs to **increase or decrease, use a list. Otherwise use an array**.
 
 ### Binary Heap
 - Tree where the **parent's value >= children's value**
