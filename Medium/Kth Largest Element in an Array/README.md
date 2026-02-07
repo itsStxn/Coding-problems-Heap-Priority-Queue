@@ -20,12 +20,26 @@ Can you solve it without sorting?
 - -10^4 <= `nums[i]` <= 10^4
 
 ## Strategy
+
+### Heap
 Implement a min heap. Since the heap does not increase or decrease, no need to turn `nums` into a list.
 
 Once the min heap is implemented, push the top to the back `k - 1` times to get the desired kth largest element.
 
-## Time Complexity - O(k * log n)
+### Quick Select
+The problem can also be solved by implementing quick select algorithm. Since kth largest is requested, quick select should be the variation for kth largest.
+
+## Time Complexity
+### Heap - O(k * log n)
 The top is pushed to back to a branch `k` times.
 
-## Space Complexity - O(1)
+### Quick Select - O(n)
+`Partition` goes over `n` numbers. The method is called on each recursive lever, but either within a left or right partition. This keeps complexity still O(n). 
+
+## Space Complexity
+
+### Heap - O(1)
 No additional data stcucture of `n` size is used.
+
+### Quick Select - O(log n)
+The call stack increases if deciding to recurse over the left or right partition.
