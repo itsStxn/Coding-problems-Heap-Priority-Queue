@@ -8,7 +8,7 @@ The distance between two points on the `X-Y` plane is the Euclidean distance `(i
 You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
 
 ### Example 1
-![alt text](image.png)
+![alt text](image.png)  
 ***Input***: `points` = [[1,3],[-2,2]], `k` = 1  
 ***Output***: [[-2,2]]  
 ***Explanation***:  
