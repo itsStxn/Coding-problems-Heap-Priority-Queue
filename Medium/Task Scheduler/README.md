@@ -50,9 +50,9 @@ The overall formula is (max occurance - 1) * (`n + 1`) + max occurance count. Th
 Now `n` is 1. It means that an interval is **A _**, and then the most frequent numbers are added. So this setting says **A _ + A B C**, which sums up to 5. This is wrong, because the interval only leaves room for an additional task: either **A B A B C** or **A C A B C**. In both cases, a task is missing.
 
 **Case A B C A B C D E F with n = 2**
-This case seems to completely ignore **D E F**. The formula works with the most frequent numbers, and suggest **A _ _ A B C**. The interval leaves room for B and C, but the result completely ignores the existence of **D E F**. If `n` was equal to 3, there would be space just for 1 extra task in **A _ _ _ A B C**. To get the space needed, `n` should be 5, resulting in **A _ _ _ _ _ A B C**. 
+This case seems to completely ignore **D E F**. The formula works with the most frequent numbers, and suggest **A _ _ A B C**. The interval leaves room for B and C, but the result completely ignores the existence of **D E F**. If `n` was equal to 3, there would be space just for 1 extra task in **A _ _ _ A B C**. To get the space needed, `n` should be 5, resulting in **A _ _ _ _ _ A B C**. Basically, we added intervals until **reaching the length of the tasks**. It means *adding the tasks we did not account for*.
 
-**Note** that all the result that where correct from using the formula, resulted in a result with a length greater or equal to the length of `tasks`. So, the result should be the **max(length of tasks, gap formula)**.
+**Note** the solution from the formula only works if *it accounts for all the tasks*, so only if it produces a result that is **equal or greated than the length of all the tasks**. If not, it meanse that the result produced from the formula *needs to increase until the total intervals hit the length of the tasks*. So, the result should be the **max(length of tasks, gap formula)**.
 
 ## Time Complexity
 
