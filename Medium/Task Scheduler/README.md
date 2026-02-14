@@ -37,7 +37,22 @@ There are only two types of tasks, A and B, which need to be separated by 3 inte
 Get the frequencies of each task, and put those number in a max heap. Create a queue to store each task's frequency and the next time that it can be run. Run an iteration where a time variable increases each time. Keep getting the max element from the max heap, decrease the frequency, and add n to the time that the frequency can be put back into the heap. Make sure to ignore a frequency when it is 0.
 
 ### Math
-Get the highest task frequency and count how many tasks appear that many times. The task with the highest frequency means that elements will appear in between its gaps. The gap is `n + 1` long (the task occupies one place itself). Basically, all you need to do is multiply `n + 1` for the highest frequency, and then add the amount of tasks that have that frequency.  
+Get the highest task frequency and count how many tasks appear that many times. 
+
+We can assume that The task with the highest frequency means that elements will appear in between its gaps. For example:
+
+**Case A B C A B C with n = 2**  
+A appears the most (also B and C, but let's consider A). It means **A _ _ A** should provide enough interval for other tasks. An interval is **A _ _**. It appears once, so basically an interval is (max occurance - 1). The interval length is `n + 1`. After the interval, you simply add the number of elements with that same occurance as A. Basically **A _ _ + A B C**. This whole thing means **A B C A B C**, which is 6. 
+
+The overall formula is (max occurance - 1) * (`n + 1`) + max occurance count. This formula **assumes** that each gap of the most frequent number is successfully giving room for all the rest, but this is not always the case.
+
+**Case A B C A B C with n = 1**
+Now `n` is 1. It means that an interval is **A _**, and then the most frequent numbers are added. So this setting says **A _ + A B C**, which sums up to 5. This is wrong, because the interval only leaves room for an additional task: either **A B A B C** or **A C A B C**. In both cases, a task is missing.
+
+**Case A B C A B C D E F with n = 2**
+This case seems to completely ignore **D E F**. The formula works with the most frequent numbers, and suggest **A _ _ A B C**. The interval leaves room for B and C, but the result completely ignores the existence of **D E F**. If `n` was equal to 3, there would be space just for 1 extra task in **A _ _ _ A B C**. To get the space needed, `n` should be 5, resulting in **A _ _ _ _ _ A B C**. 
+
+**Note** that all the result that where correct from using the formula, resulted in a result with a length greater or equal to the length of `tasks`. So, the result should be the **max(length of tasks, gap formula)**.
 
 ## Time Complexity
 
