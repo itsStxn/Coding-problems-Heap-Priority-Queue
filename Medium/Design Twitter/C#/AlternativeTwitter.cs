@@ -61,13 +61,17 @@ public class AlternativeTwitter : Twitter {
 		
 		var tweets = GetTweets(userId);
 		if (tweets.Count > 0)
-			Add(heap, tweets[^1]);
+			heap.Add(tweets[^1]);
 		
 		foreach (int id in GetFollows(userId)) {
 			tweets = GetTweets(id);
 			if (tweets.Count > 0)
-				Add(heap, tweets[^1]);
+				heap.Add(tweets[^1]);
 		}
+
+		int n = heap.Count;
+		for (int i = (n / 2) - 1; i >= 0; i--)
+			HeapifyDown(heap, i);
 
 		return heap;
 	}
@@ -110,9 +114,8 @@ public class AlternativeTwitter : Twitter {
 		}
 	}
 
-	static private void HeapifyDown(List<Tweet> heap) {
+	static private void HeapifyDown(List<Tweet> heap, int curr = 0) {
 		int n = heap.Count;
-		int curr = 0;
 
 		while (true) {
 			int largest = curr;
